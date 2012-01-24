@@ -2,6 +2,7 @@ package TVFeederLib;
 use strict;
 use warnings;
 
+use IO::File;
 use YAML::Syck;
 $YAML::Syck::ImplicitTyping  = 1;
 $YAML::Syck::ImplicitUnicode = 1;
@@ -33,7 +34,9 @@ sub get_feedlist_values($self)
 sub _load_feedlist($self)
 {
   if (-f "feedlist.xml") {
-    open(my $fh, "<:encoding(UTF-8)", "feedlist.xml");
+    my $fh = new IO::File;
+    open($fh, "<:encoding(UTF-8)", "feedlist.xml")
+      or die "Unable to open feed file";
     my @feedlist = LoadFile($fh);
     $self->feedlist(@feedlist);
     $fh->close;
