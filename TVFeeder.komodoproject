@@ -3,10 +3,32 @@
 <project id="c4ed4775-72ad-4566-825d-753ec6f3e150" kpf_version="5" name="TVFeeder.komodoproject">
 <file id="3ff2cb1e-5311-480a-aa9b-2378b2de62ae" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="TVFeeder.pl" url="TVFeeder.pl">
 </file>
+<file id="552c1a52-5b13-4905-a53e-2609932acaf4" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="FeedItem.pm" url="FeedItem.pm">
+</file>
 <file id="56ced23a-5937-4654-a875-1248254ef69c" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="TVFeederApp.pm" url="TVFeederApp.pm">
+</file>
+<file id="7d4dc72a-be9d-4662-a8ea-aaf5bbf6dcd4" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="README" url="README">
+</file>
+<file id="96507ab9-9f04-4da1-a4ad-52e364fb7c4c" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="MainFrameActions.pm" url="MainFrameActions.pm">
 </file>
 <file id="b29ae573-2863-4806-9c42-9171b2855b8c" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="MainFrame.pm" url="MainFrame.pm">
 </file>
 <file id="e3c2929a-0341-4528-a49f-a8cc10194d9b" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="TVFeederLib.pm" url="TVFeederLib.pm">
 </file>
+<preference-set idref="c4ed4775-72ad-4566-825d-753ec6f3e150">
+  <string id="currentInvocationLanguage">Perl</string>
+  <string relative="path" id="import_dirname"></string>
+  <string id="import_exclude_matches">*.*~;*.bak;*.tmp;CVS;.#*;*.pyo;*.pyc;.svn;_svn;.git;.hg;.bzr;*%*;tmp*.html;.DS_Store;*.swp;*.kpf;*.komodoproject;.komodotools</string>
+  <string id="import_include_matches"></string>
+  <string id="language">Perl</string>
+  <string id="lastInvocation"></string>
+  <string id="lastTestPlanName_pref">New test plan #1</string>
+<preference-set id="testPlans">
+<preference-set id="New test plan #1">
+  <string id="command_line"></string>
+  <string relative="url" id="directory"></string>
+  <string id="language">Perl - TAP (*.t)</string>
+</preference-set>
+</preference-set>
+</preference-set>
 </project>
