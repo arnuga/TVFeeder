@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="c4ed4775-72ad-4566-825d-753ec6f3e150" kpf_version="5" name="TVFeeder.komodoproject">
+<file id="3ff2cb1e-5311-480a-aa9b-2378b2de62ae" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="TVFeeder.pl" url="TVFeeder.pl">
+</file>
+<file id="56ced23a-5937-4654-a875-1248254ef69c" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="TVFeederApp.pm" url="TVFeederApp.pm">
+</file>
+<file id="b29ae573-2863-4806-9c42-9171b2855b8c" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="MainFrame.pm" url="MainFrame.pm">
+</file>
+<file id="e3c2929a-0341-4528-a49f-a8cc10194d9b" idref="c4ed4775-72ad-4566-825d-753ec6f3e150" name="TVFeederLib.pm" url="TVFeederLib.pm">
+</file>
+</project>
