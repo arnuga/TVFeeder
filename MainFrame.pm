@@ -31,7 +31,7 @@ sub new {
 	$self->{window_1_pane_1} = Wx::Panel->new($self->{window_1}, -1, wxDefaultPosition, wxDefaultSize, );
 	$self->{combo_box_1} = Wx::ComboBox->new($self->{window_1_pane_1}, -1, "", wxDefaultPosition, wxDefaultSize, [ $self->{lib}->get_feedlist_names() ], wxCB_DROPDOWN|wxCB_READONLY);
 	$self->FeedListComboBox->SetSelection(0);
-	$self->FeedListComboBox->SetEditable(0);
+	#$self->FeedListComboBox->SetEditable(0);
 	$self->{button_1} = Wx::Button->new($self->{window_1_pane_1}, -1, "Load Feed");
 	$self->{grid_1} = Wx::Grid->new($self->{window_1_pane_2}, -1);
 	$self->{notebook_1_pane_2} = Wx::Panel->new($self->Notebook, -1, wxDefaultPosition, wxDefaultSize, );
