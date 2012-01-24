@@ -68,40 +68,19 @@ sub get_feedlist_value($self, $index)
 
 sub get_entries_for_url($self, $url)
 {
-  my $feed_data = XML::FeedPP->new($url);
-  return sort { $a->title() cmp $b->title() } $feed_data->get_item();
+    my $feed_data;
+  eval { $feed_data = XML::FeedPP->new($url); };
+  if (my $err = $@) {
+    warn "Failed to load feed";
+    return ();
+  } else {
+    return sort { $a->title() cmp $b->title() } $feed_data->get_item();
+  }
 }
 
 sub get_feed_item($self, $feed)
 {
   return FeedItem->new_hash_init(feed => $feed);
-}
-
-sub feed_entry_parser($self, $feed_title)
-{
-  my $show_name      = undef;
-  my $season_number  = undef;
-  my $episode_number = undef;
-  
-  $feed_title =~ /(.*)(\d{1,2})[x|e](\d{2}).*/i;
-  $show_name      = $1;
-  $season_number  = $2;
-  $episode_number = $3;
-
-  my $format = undef;  
-  if ($feed_title =~ /(\d{3,4}[i|p])/i) {
-    $format = $1;
-  }
-  
-  my $is_proper = 0;
-  if ($feed_title =~ /(proper)/i) {
-    $is_proper = $1 ? 1 : 0;
-  }
-  
-  $show_name =~ s/s0\s*$//i;       #remove s0 if it is still hanging around at the end
-  $show_name =~ s/\./ /g;        # replace all periods with a space
-  
-  return ($show_name, $season_number, $episode_number, $format, $is_proper, $feed_title);
 }
 
 1;
