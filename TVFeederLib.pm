@@ -43,7 +43,7 @@ sub _load_feedlist($self)
   }
 }
 
-sub _save_feedlist($self)
+sub save_feedlist($self)
 {
 #  @feedlist = (
 #	{ name => 'Demonoid (1)', url => 'http://static.demonoid.me/rss/3.xml' },
@@ -81,6 +81,11 @@ sub get_entries_for_url($self, $url)
 sub get_feed_item($self, $feed)
 {
   return FeedItem->new_hash_init(feed => $feed);
+}
+
+sub add_feed_entry($self, $name, $url)
+{
+  $self->feedlist_push({name => $name, url => $url});
 }
 
 1;

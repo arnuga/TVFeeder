@@ -20,76 +20,105 @@ sub new {
 	$style = wxDEFAULT_FRAME_STYLE 
 		unless defined $style;
 
-	my @feed_names = $tvfLib->get_feedlist_names();
-	
 	$self = $self->SUPER::new( $parent, $id, $title, $pos, $size, $style, $name );
 	$self->{lib} = $tvfLib;
-	$self->{notebook_1} = Wx::Notebook->new($self, -1, wxDefaultPosition, wxDefaultSize, 0);
-	$self->{notebook_1_pane_1} = Wx::Panel->new($self->Notebook, -1, wxDefaultPosition, wxDefaultSize, );
-	$self->{window_1} = Wx::SplitterWindow->new($self->{notebook_1_pane_1}, -1, wxDefaultPosition, wxDefaultSize, wxSP_3D|wxSP_BORDER);
-	$self->{window_1_pane_2} = Wx::Panel->new($self->{window_1}, -1, wxDefaultPosition, wxDefaultSize, );
-	$self->{window_1_pane_1} = Wx::Panel->new($self->{window_1}, -1, wxDefaultPosition, wxDefaultSize, );
-	$self->{combo_box_1} = Wx::ComboBox->new($self->{window_1_pane_1}, -1, "", wxDefaultPosition, wxDefaultSize, [ $self->{lib}->get_feedlist_names() ], wxCB_DROPDOWN|wxCB_READONLY);
-	$self->FeedListComboBox->SetSelection(0);
-	$self->{button_1} = Wx::Button->new($self->{window_1_pane_1}, -1, "Load Feed");
-	$self->{grid_1} = Wx::Grid->new($self->{window_1_pane_2}, -1);
-	$self->{notebook_1_pane_2} = Wx::Panel->new($self->Notebook, -1, wxDefaultPosition, wxDefaultSize, );
-
+	
+	$self->__setup_gui();
 	$self->__set_properties();
 	$self->__do_layout();
-
-	Wx::Event::EVT_BUTTON($self, $self->{button_1}->GetId, \&btnLoadFeed);
+	$self->__setup_events();
 
 	return $self;
+}
+
+sub __setup_gui {
+	my $self = shift;
+
+	$self->{notebook_1} = Wx::Notebook->new($self, -1, wxDefaultPosition, wxDefaultSize, 0);	
+	$self->{notebook_1_pane_1} = Wx::Panel->new($self->{notebook_1}, -1, wxDefaultPosition, wxDefaultSize, );
+	$self->{text_ctrl_1} = Wx::TextCtrl->new($self->{notebook_1_pane_1}, -1, "", wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER|wxTE_PROCESS_TAB);
+	$self->{text_ctrl_2} = Wx::TextCtrl->new($self->{notebook_1_pane_1}, -1, "", wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER|wxTE_PROCESS_TAB);
+	$self->{button_1} = Wx::Button->new($self->{notebook_1_pane_1}, wxID_ADD, "");
+	$self->{label_1} = Wx::StaticText->new($self->{notebook_1_pane_1}, -1, "", wxDefaultPosition, wxDefaultSize);
+	$self->{choice_1} = Wx::Choice->new($self->{notebook_1_pane_1}, -1, wxDefaultPosition, wxDefaultSize, [ $self->{lib}->get_feedlist_names() ]);
+	$self->{button_2} = Wx::Button->new($self->{notebook_1_pane_1}, -1, "Load Feed");
+	$self->{label_2} = Wx::StaticText->new($self->{notebook_1_pane_1}, -1, "", wxDefaultPosition, wxDefaultSize);
+	$self->{grid_1} = Wx::Grid->new($self->{notebook_1_pane_1}, -1);
+	$self->{notebook_1_pane_2} = Wx::Panel->new($self->{notebook_1}, -1, wxDefaultPosition, wxDefaultSize);
+}
+
+sub __setup_events {
+	my $self = shift;
+
+	Wx::Event::EVT_SIZE($self, \&ResizeOccured);	
+	Wx::Event::EVT_BUTTON($self, $self->{button_1}->GetId, \&btnAddFeed);
+	Wx::Event::EVT_BUTTON($self, $self->{button_2}->GetId, \&btnLoadFeed);
 }
 
 sub __set_properties {
 	my $self = shift;
 
 	$self->SetTitle("TV Feeder");
-	$self->FeedListComboBox->SetSelection(-1);
-	$self->Grid->CreateGrid(0, 6);
-	$self->Grid->EnableEditing(0);
-	$self->Grid->SetColLabelValue(0, "Show");
-	$self->Grid->SetColLabelValue(1, "Season");
-	$self->Grid->SetColLabelValue(2, "Episode");
-	$self->Grid->SetColLabelValue(3, "Format");
-	$self->Grid->SetColLabelValue(4, "Is Proper");
-	$self->Grid->SetColLabelValue(5, "Original Title");
+	$self->SetSize(Wx::Size->new(600, 300));
+	$self->{text_ctrl_1}->SetMinSize(Wx::Size->new(200, 27));
+	$self->{text_ctrl_2}->SetMinSize(Wx::Size->new(200, 27));
+	$self->{choice_1}->SetMinSize(Wx::Size->new(200, 29));
+	$self->{choice_1}->SetSelection(0);
+	$self->{grid_1}->CreateGrid(0, 7);
+	$self->{grid_1}->EnableEditing(0);
+	$self->{grid_1}->EnableDragGridSize(0);
+	$self->{grid_1}->SetSelectionMode(wxGridSelectRows);
 	
-	$self->Grid->SetColFormatNumber(1);
-	$self->Grid->SetColFormatNumber(2);
-	$self->Grid->SetColFormatBool(4);
+	$self->{grid_1}->SetColLabelValue(0, "Show");
+	$self->{grid_1}->AutoSizeColumn(0, 0);
 	
-	my @feed_names = $self->{lib}->get_feedlist_names();
-	if (scalar(@feed_names) > 0) {
-		$self->FeedListComboBox->SetSelection(0);
-		
-	}
+	$self->{grid_1}->SetColLabelValue(1, "Season");
+	$self->{grid_1}->SetColFormatNumber(1);
+	$self->{grid_1}->AutoSizeColumn(1, 1);
+	
+	$self->{grid_1}->SetColLabelValue(2, "Episode");
+	$self->{grid_1}->SetColFormatNumber(2);
+	$self->{grid_1}->AutoSizeColumn(2, 1);
+	
+	$self->{grid_1}->SetColLabelValue(3, "Format");
+	$self->{grid_1}->AutoSizeColumn(3, 1);
+	
+	$self->{grid_1}->SetColLabelValue(4, "Proper");
+	$self->{grid_1}->SetColFormatBool(4);
+	$self->{grid_1}->AutoSizeColumn(4, 1);
+	
+	$self->{grid_1}->SetColLabelValue(5, "RePack");
+	$self->{grid_1}->SetColFormatBool(5);
+	$self->{grid_1}->AutoSizeColumn(5, 1);
+	
+	$self->{grid_1}->SetColLabelValue(6, "Original Title");
+	$self->{grid_1}->ForceRefresh();
+	$self->{grid_1}->AutoSizeColumn(6, 0);
 }
 
 sub __do_layout {
 	my $self = shift;
-
-	$self->{sizer_2} = Wx::BoxSizer->new(wxHORIZONTAL);
-	$self->{sizer_3} = Wx::BoxSizer->new(wxHORIZONTAL);
-	$self->{sizer_4} = Wx::BoxSizer->new(wxHORIZONTAL);
-	$self->{sizer_6} = Wx::BoxSizer->new(wxVERTICAL);
-	$self->{sizer_7} = Wx::BoxSizer->new(wxHORIZONTAL);
-	$self->{sizer_7}->Add($self->FeedListComboBox, 0, 0, 0);
-	$self->{sizer_7}->Add($self->{button_1}, 0, 0, 0);
-	$self->{sizer_6}->Add($self->{sizer_7}, 1, wxEXPAND, 0);
-	$self->{window_1_pane_1}->SetSizer($self->{sizer_6});
-	$self->{sizer_4}->Add($self->Grid, 1, wxEXPAND, 0);
-	$self->{window_1_pane_2}->SetSizer($self->{sizer_4});
-	$self->{window_1}->SplitHorizontally($self->{window_1_pane_1}, $self->{window_1_pane_2}, );
-	$self->{sizer_3}->Add($self->{window_1}, 1, wxEXPAND, 0);
-	$self->{notebook_1_pane_1}->SetSizer($self->{sizer_3});
-	$self->Notebook->AddPage($self->{notebook_1_pane_1}, "Feeds");
-	$self->Notebook->AddPage($self->{notebook_1_pane_2}, "Shows");
-	$self->{sizer_2}->Add($self->Notebook, 1, wxEXPAND, 0);
-	$self->SetSizer($self->{sizer_2});
-	$self->{sizer_2}->Fit($self);
+	
+	$self->{sizer_1} = Wx::BoxSizer->new(wxVERTICAL);
+	$self->{grid_sizer_1} = Wx::FlexGridSizer->new(2, 1, 10, 0);
+	$self->{grid_sizer_2} = Wx::FlexGridSizer->new(2, 3, 0, 0);
+	$self->{grid_sizer_2}->Add($self->{text_ctrl_2}, 0, 0, 0);
+	$self->{grid_sizer_2}->Add($self->{button_1}, 0, 0, 0);
+	$self->{grid_sizer_2}->Add($self->{label_1}, 0, 0, 0);
+	$self->{grid_sizer_2}->Add($self->{choice_1}, 0, 0, 0);
+	$self->{grid_sizer_2}->Add($self->{button_2}, 0, 0, 0);
+	$self->{grid_sizer_2}->Add($self->{label_2}, 0, 0, 0);
+	$self->{grid_sizer_2}->AddGrowableRow(1);
+	$self->{grid_sizer_2}->AddGrowableCol(2);
+	$self->{grid_sizer_1}->Add($self->{grid_sizer_2}, 1, wxEXPAND, 0);
+	$self->{grid_sizer_1}->Add($self->{grid_1}, 1, wxEXPAND, 0);
+	$self->{notebook_1_pane_1}->SetSizer($self->{grid_sizer_1});
+	$self->{grid_sizer_1}->AddGrowableRow(1);
+	$self->{grid_sizer_1}->AddGrowableCol(0);
+	$self->{notebook_1}->AddPage($self->{notebook_1_pane_1}, "RSS Feeds");
+	$self->{notebook_1}->AddPage($self->{notebook_1_pane_2}, "TV Shows");
+	$self->{sizer_1}->Add($self->{notebook_1}, 1, wxEXPAND, 0);
+	$self->SetSizer($self->{sizer_1});
 	$self->Layout();
 }
 
@@ -106,13 +135,14 @@ sub _load_feed_into_grid
 			my $feed_item = $self->{lib}->get_feed_item($item);
 			$feed_item->parse_feed();
 			if ($feed_item->show_name && $feed_item->season_number && $feed_item->episode_number) {
-				$self->Grid->AppendRows(1);
-				$self->Grid->SetCellValue($rownum, 0, $feed_item->show_name || '');
-				$self->Grid->SetCellValue($rownum, 1, $feed_item->season_number || 0);
-				$self->Grid->SetCellValue($rownum, 2, $feed_item->episode_number || 0);
-				$self->Grid->SetCellValue($rownum, 3, $feed_item->format || '');
-				$self->Grid->SetCellValue($rownum, 4, $feed_item->is_proper || 0);
-				$self->Grid->SetCellValue($rownum, 5, $feed_item->original_title || '');
+				$self->{grid_1}->AppendRows(1);
+				$self->{grid_1}->SetCellValue($rownum, 0, $feed_item->show_name || '');
+				$self->{grid_1}->SetCellValue($rownum, 1, $feed_item->season_number || 0);
+				$self->{grid_1}->SetCellValue($rownum, 2, $feed_item->episode_number || 0);
+				$self->{grid_1}->SetCellValue($rownum, 3, $feed_item->format || '');
+				$self->{grid_1}->SetCellValue($rownum, 4, $feed_item->is_proper || 0);
+				$self->{grid_1}->SetCellValue($rownum, 5, $feed_item->is_repack || 0);
+				$self->{grid_1}->SetCellValue($rownum, 6, $feed_item->original_title || '');
 				$rownum++;
 			}
 		}
@@ -122,16 +152,35 @@ sub _load_feed_into_grid
 sub clear_grid
 {
 	my $self = shift;
-	if ($self->Grid) {
-		my $num_grid_rows = $self->Grid->GetNumberRows();
+	if ($self->{grid_1}) {
+		my $num_grid_rows = $self->{grid_1}->GetNumberRows();
 		if ($num_grid_rows > 0) {
-			$self->Grid->DeleteRows(0, $num_grid_rows);
+			$self->{grid_1}->DeleteRows(0, $num_grid_rows);
 		}
 	}
 }
 
-sub Grid { return (shift)->{grid_1}; }
-sub Notebook { return (shift)->{notebook_1}; }
-sub FeedListComboBox { return (shift)->{combo_box_1}; }
+sub resize_grid
+{
+	my $self = shift;
+    $self->{grid_1}->AutoSizeColumns(0);
+    my $total_col_width = $self->{grid_1}->GetDefaultColSize();
+    warn "Width of column -1 is: $total_col_width";
+    $total_col_width += $self->{grid_1}->GetColSize(0);
+    $total_col_width += $self->{grid_1}->GetColSize(1);
+    $total_col_width += $self->{grid_1}->GetColSize(2);
+    $total_col_width += $self->{grid_1}->GetColSize(3);
+    $total_col_width += $self->{grid_1}->GetColSize(4);
+    $total_col_width += $self->{grid_1}->GetColSize(5);
+    
+    my $window_width = $self->GetSize()->GetWidth();
+    if ($total_col_width && $window_width && ($window_width > $total_col_width)) {
+        my $new_col_6_width = $window_width - $total_col_width;
+		$new_col_6_width = $new_col_6_width - 40;
+        $self->{grid_1}->SetColSize(6, $new_col_6_width);
+        warn "Window Width: $window_width | Col6 Width: $new_col_6_width";
+    }
+    $self->{grid_1}->ForceRefresh();
+}
 
 1;

@@ -11,6 +11,7 @@ use Class::MethodMaker
                     episode_number
                     format
                     is_proper
+                    is_repack
                     original_title/
                 ]
     ];
@@ -40,6 +41,9 @@ sub parse_feed($self)
         $self->is_proper(1);
     }
     
+    if ($string =~ /(repack)/i) {
+        $self->is_repack(1);
+    }
 }
 
 1;
