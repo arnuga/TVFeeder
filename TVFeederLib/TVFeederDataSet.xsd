@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TVFeederDataSet" targetNamespace="http://tempuri.org/TVFeederDataSet.xsd" xmlns:mstns="http://tempuri.org/TVFeederDataSet.xsd" xmlns="http://tempuri.org/TVFeederDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TVFeederConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TVFeederConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TVFeederLib.Properties.Settings.GlobalReference.Default.TVFeederConnectionString" Provider="System.Data.SQLite" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TVFeederDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TVFeederDataSet" msprop:Generator_UserDSName="TVFeederDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Feeds" msprop:Generator_TableClassName="FeedsDataTable" msprop:Generator_TableVarName="tableFeeds" msprop:Generator_TablePropName="Feeds" msprop:Generator_RowDeletingName="FeedsRowDeleting" msprop:Generator_UserTableName="Feeds" msprop:Generator_RowChangingName="FeedsRowChanging" msprop:Generator_RowEvHandlerName="FeedsRowChangeEventHandler" msprop:Generator_RowDeletedName="FeedsRowDeleted" msprop:Generator_RowEvArgName="FeedsRowChangeEvent" msprop:Generator_RowChangedName="FeedsRowChanged" msprop:Generator_RowClassName="FeedsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+              <xs:element name="url" msprop:Generator_ColumnVarNameInTable="columnurl" msprop:Generator_ColumnPropNameInRow="url" msprop:Generator_ColumnPropNameInTable="urlColumn" msprop:Generator_UserColumnName="url" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FeedEntries" msprop:Generator_TableClassName="FeedEntriesDataTable" msprop:Generator_TableVarName="tableFeedEntries" msprop:Generator_TablePropName="FeedEntries" msprop:Generator_RowDeletingName="FeedEntriesRowDeleting" msprop:Generator_UserTableName="FeedEntries" msprop:Generator_RowChangingName="FeedEntriesRowChanging" msprop:Generator_RowEvHandlerName="FeedEntriesRowChangeEventHandler" msprop:Generator_RowDeletedName="FeedEntriesRowDeleted" msprop:Generator_RowEvArgName="FeedEntriesRowChangeEvent" msprop:Generator_RowChangedName="FeedEntriesRowChanged" msprop:Generator_RowClassName="FeedEntriesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
+              <xs:element name="feed_no" msprop:Generator_ColumnVarNameInTable="columnfeed_no" msprop:Generator_ColumnPropNameInRow="feed_no" msprop:Generator_ColumnPropNameInTable="feed_noColumn" msprop:Generator_UserColumnName="feed_no" type="xs:string" minOccurs="0" />
+              <xs:element name="original_title" msprop:Generator_ColumnVarNameInTable="columnoriginal_title" msprop:Generator_ColumnPropNameInRow="original_title" msprop:Generator_ColumnPropNameInTable="original_titleColumn" msprop:Generator_UserColumnName="original_title" type="xs:string" minOccurs="0" />
+              <xs:element name="original_url" msprop:Generator_ColumnVarNameInTable="columnoriginal_url" msprop:Generator_ColumnPropNameInRow="original_url" msprop:Generator_ColumnPropNameInTable="original_urlColumn" msprop:Generator_UserColumnName="original_url" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Shows" msprop:Generator_TableClassName="ShowsDataTable" msprop:Generator_TableVarName="tableShows" msprop:Generator_TablePropName="Shows" msprop:Generator_RowDeletingName="ShowsRowDeleting" msprop:Generator_UserTableName="Shows" msprop:Generator_RowChangingName="ShowsRowChanging" msprop:Generator_RowEvHandlerName="ShowsRowChangeEventHandler" msprop:Generator_RowDeletedName="ShowsRowDeleted" msprop:Generator_RowEvArgName="ShowsRowChangeEvent" msprop:Generator_RowChangedName="ShowsRowChanged" msprop:Generator_RowClassName="ShowsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="show_no" msprop:Generator_ColumnVarNameInTable="columnshow_no" msprop:Generator_ColumnPropNameInRow="show_no" msprop:Generator_ColumnPropNameInTable="show_noColumn" msprop:Generator_UserColumnName="show_no" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+              <xs:element name="thetvdb_no" msprop:Generator_ColumnVarNameInTable="columnthetvdb_no" msprop:Generator_ColumnPropNameInRow="thetvdb_no" msprop:Generator_ColumnPropNameInTable="thetvdb_noColumn" msprop:Generator_UserColumnName="thetvdb_no" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="WatchedShows" msprop:Generator_TableClassName="WatchedShowsDataTable" msprop:Generator_TableVarName="tableWatchedShows" msprop:Generator_TablePropName="WatchedShows" msprop:Generator_RowDeletingName="WatchedShowsRowDeleting" msprop:Generator_UserTableName="WatchedShows" msprop:Generator_RowChangingName="WatchedShowsRowChanging" msprop:Generator_RowEvHandlerName="WatchedShowsRowChangeEventHandler" msprop:Generator_RowDeletedName="WatchedShowsRowDeleted" msprop:Generator_RowEvArgName="WatchedShowsRowChangeEvent" msprop:Generator_RowChangedName="WatchedShowsRowChanged" msprop:Generator_RowClassName="WatchedShowsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="show_no" msprop:Generator_ColumnVarNameInTable="columnshow_no" msprop:Generator_ColumnPropNameInRow="show_no" msprop:Generator_ColumnPropNameInTable="show_noColumn" msprop:Generator_UserColumnName="show_no" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="FeedsKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Feeds" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="FeedEntriesKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FeedEntries" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:Shows" />
+      <xs:field xpath="mstns:show_no" />
+    </xs:unique>
+    <xs:keyref name="FK_Shows_WatchedShows" refer="Constraint1" msdata:ConstraintOnly="true">
+      <xs:selector xpath=".//mstns:WatchedShows" />
+      <xs:field xpath="mstns:show_no" />
+    </xs:keyref>
+    <xs:keyref name="FK_Feeds_FeedEntries" refer="FeedsKey1" msdata:ConstraintOnly="true">
+      <xs:selector xpath=".//mstns:FeedEntries" />
+      <xs:field xpath="mstns:feed_no" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

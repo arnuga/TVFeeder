@@ -1,0 +1,16 @@
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\obj\x86\Debug\TVFeeder.FeedsForm.resources
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\obj\x86\Debug\TVFeeder.TVFeederMainForm.resources
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\obj\x86\Debug\TVFeeder.Properties.Resources.resources
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\bin\Debug\TVFeeder.exe
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\bin\Debug\TVFeeder.pdb
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\bin\Debug\TVFeederLib.dll
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\bin\Debug\NUnrar.dll
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\bin\Debug\System.Data.SQLite.dll
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\bin\Debug\TVFeederLib.pdb
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\bin\Debug\System.Data.SQLite.pdb
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\obj\x86\Debug\TVFeeder.exe
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\obj\x86\Debug\TVFeeder.pdb
+C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeeder\bin\Debug\TVFeeder.exe.config
