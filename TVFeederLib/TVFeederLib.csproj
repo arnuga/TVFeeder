@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NUnrar">
-      <HintPath>..\..\..\..\..\NUnrar_1_0_1\NUnrar.dll</HintPath>
+      <HintPath>..\3rd Party Libs\NUnrar.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
