@@ -1,9 +1,0 @@
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\bin\Debug\TVFeederLib.dll.config
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\bin\Debug\TVFeederLib.dll
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\bin\Debug\TVFeederLib.pdb
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\bin\Debug\NUnrar.dll
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\bin\Debug\System.Data.SQLite.dll
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\bin\Debug\System.Data.SQLite.pdb
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\obj\Debug\TVFeederLib.dll
-C:\Users\dxs\documents\visual studio 2010\Projects\TVFeeder\TVFeederLib\obj\Debug\TVFeederLib.pdb
