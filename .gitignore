@@ -1,0 +1,7 @@
+*.exe
+*.suo
+[Bb]in
+[Dd]ebug*/
+*.log
+obj/
+[Rr]elease*/
